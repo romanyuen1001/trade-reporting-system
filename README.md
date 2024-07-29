@@ -28,8 +28,9 @@ The app defines the following CRUD APIs.
 You can test them using Postman or any other rest client.
 
 ## Screenshots of APIs call 📷
-<img width="1125" alt="image" src="https://github.com/user-attachments/assets/dc2a18f6-ac54-4d15-b327-9179ad83eee4">
-<img width="1125" alt="image" src="https://github.com/user-attachments/assets/e07446ca-3b75-4e03-b785-0b3dc96bdfbd">
+<img width="1125" alt="image" src="https://github.com/user-attachments/assets/6c830f44-5c46-45db-9ec6-55e0b0a86ceb">
+<img width="1125" alt="image" src="https://github.com/user-attachments/assets/8efd4491-0431-494c-bbc8-e43f8a42ae0f">
+
 
 ## Possible improvements / out of scope ✨ 
 It is coming, stay tuned.
