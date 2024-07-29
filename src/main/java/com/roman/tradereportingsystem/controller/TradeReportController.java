@@ -24,6 +24,7 @@ public class TradeReportController {
             @PathVariable String productType,
             @PathVariable String brokerName) {
         // TODO: Introduce switch case for product types, or make some specific APIs
+        // TODO: Handle spacing in param 'FX Forward Trade' for enum
         if (!Objects.equals(productType, ProductType.FxForward.name())) {
             return ResponseEntity.badRequest().body("Invalid product type. Please try '" + ProductType.FxForward.name() + "'");
         }
