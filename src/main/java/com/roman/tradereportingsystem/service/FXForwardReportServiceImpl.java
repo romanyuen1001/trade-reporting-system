@@ -37,7 +37,7 @@ public class FXForwardReportServiceImpl implements FXForwardReportService {
         FXForwardRepository.save(new FXForward("T-FWD-5", 5, "GBPUSD FRD Exp17Jul2021", "20200409", 3000000, "S", 1.2451, externalBrokerB, "20210717"));
     }
 
-    private List<FXForward> getFXForwardsByBroker(String brokerName) {
+    private List<FXForward> getFXForwardsByBrokerName(String brokerName) {
         return FXForwardRepository.findAll().stream()
                 .filter(fxForward -> fxForward.getExternalBroker() != null && brokerName.equals(fxForward.getExternalBroker().getName()))
                 .collect(Collectors.toList());
@@ -45,7 +45,7 @@ public class FXForwardReportServiceImpl implements FXForwardReportService {
 
     @Override
     public String getFXForwardReportByBrokerName(String brokerName) {
-        List<FXForward> fxForwards = getFXForwardsByBroker(brokerName);
+        List<FXForward> fxForwards = getFXForwardsByBrokerName(brokerName);
         FXForwardReportGenerator fxForwardReportGenerator = new FXForwardReportGenerator();
         return fxForwardReportGenerator.generateTradeReport(fxForwards);
     }
