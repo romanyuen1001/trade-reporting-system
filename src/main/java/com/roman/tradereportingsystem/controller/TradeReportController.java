@@ -17,19 +17,20 @@ import java.util.Objects;
 public class TradeReportController {
 
     @Autowired
-    private FXForwardReportServiceImpl FXForwardReportServiceImpl;
+    private FXForwardReportServiceImpl fXForwardReportServiceImpl;
 
+    // TODO: Modify this func to be generic as filter - use dto for retrieving product type, broker name, etc
     @GetMapping("/{productType}/{brokerName}")
     public ResponseEntity<String> generateReportByProduceTypeAndBrokerName(
             @PathVariable String productType,
             @PathVariable String brokerName) {
-        // TODO: Introduce switch case for product types, or make some specific APIs
+        // TODO: Introduce the factory pattern in controller to handle checking logic
         // TODO: Handle spacing in param 'FX Forward Trade' for enum
         if (!Objects.equals(productType, ProductType.FxForward.name())) {
             return ResponseEntity.badRequest().body("Invalid product type. Please try '" + ProductType.FxForward.name() + "'");
         }
         try {
-            String report = FXForwardReportServiceImpl.getFXForwardReportByBrokerName(brokerName);
+            String report = fXForwardReportServiceImpl.getFXForwardReportByBrokerName(brokerName);
             return ResponseEntity.ok(report);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error generating report: " + e.getMessage());

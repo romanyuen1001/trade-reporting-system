@@ -38,8 +38,8 @@ public class FXForwardReportServiceImpl implements FXForwardReportService {
     }
 
     private List<FXForward> getFXForwardsByBrokerName(String brokerName) {
-        return FXForwardRepository.findAll().stream()
-                .filter(fxForward -> fxForward.getExternalBroker() != null && brokerName.equals(fxForward.getExternalBroker().getName()))
+        return FXForwardRepository.findAll().stream() // TODO: Introduce native query in repo to find by brokerName but not findAll
+                .filter(fxForward -> brokerName.equals(fxForward.getExternalBroker().getName()))
                 .collect(Collectors.toList());
     }
 
